@@ -2,7 +2,7 @@
 #!/bin/bash
 cromwell_version="33"
 wdl="processing-for-variant-discovery-gatk4.wdl"
-json="processing-for-variant-discovery-gatk4.json"
+json="processing-for-variant-discovery-gatk4.hg38.wgs.inputs.json"
 
 #downloand cromwell
 wget http://github.com/broadinstitute/cromwell/releases/download/$cromwell_version/cromwell-$cromwell_version.jar
