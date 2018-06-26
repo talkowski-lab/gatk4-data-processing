@@ -1,30 +1,15 @@
 sudo: required
 dist: trusty
 services:
-  - docker
-#deploy:
-#  provider: gcs
-#  access_key_id: "GCS Interoperable Access Key ID"
-#  secret_access_key: "GCS Interoperable Access Secret"
-#  bucket: "GCS Bucket"
-#  skip_cleanup: true
-#  travis encrypt --add deploy.secret_access_key
-
+- docker
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 script:
-  - travis/test.sh
-
-
-
-
-#notifications:
-#  slack:
-#    rooms:
-#      - secure: B5KYcnhk/ujAUWlHsjzP7ROLm6MtYhaGikdYf6JYINovhMbVKnZCTlZEy7rqT3L2T5uJ25iefD500VQGk1Gn7puQ1sNq50wqjzQaj20PWEiBwoWalcV/nKBcQx1TyFT13LJv8fbFnVPxFCkC3YXoHedx8qAhDs8GH/tT5J8XOC8=
-#    template:
-#      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}"
-#    on_success: change
-#    on_failure: change
-#    on_pull_requests: false
+- travis/test.sh
+deploy:
+  provider: gcs
+  access_key_id: GOOGNHV5W4BBYT2JPF7AAH34
+  secret_access_key:
+    secure: btSdhiFq7O6qnmnOfJ1lhUkZsxW70Duxt9DJCaYRUEAO4ibrG7pA/fKPriDXr730/ur4q9hoMMoFG7lhWwqLXTpGw5nJYVQPY+2wzMo623x1taDYWGEo4c9zhm1uHPhA/fWMmaIaPle2dS0rMh6ecSVcAm+fhDr1hlHSllfTkMY6/WfBZ22oEysKKKjaO0RVjiag64BMgHytbCF1WIgX09kRwQ4kyRVj6WLjFDdCXnH+S7TCxeqLXfp/ubCZTZLNX6oDZHXzbZpsbuu69FVFLz17iqSjW9HF6hTSYpgQfo2GDbT7+lGpgivdyjaRwKR+m0eCqJB/FfD9+3FjQoNcqSzTDA8D4MXcYm0TrRqsuXam7d0LYjqW9rxPxHNGDD2xC44ubCUuyswecYIvC8vcRCpCHqs05CzUKuMI2q5YfIKTZcstmuEg3PiMsqgaJZ0N+GTN3OFuuLHYst804uKgndkHsOuUz5Mmr1Vv7ClNlsH8fsRxfpuZfRuL2+m3XjCbkzWs7k9eA+wxGBmzdKn2smL7Hmfd0MDa9i88mAjviOVFuCGseu1947YRUc1+Fo94KWYTAa348uslmi+jet1dZIuv4fk+yltwJ5AVY8fawzZhGvsI4Svbo8MNpwqHz8YSRRO0Up624kKBVPne9Ai3m2DQpfQaWnlmM3eZR1bZNrA=
+  bucket: beri-test/gatk-workflows-travis-tests
