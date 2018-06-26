@@ -1,0 +1,35 @@
+sudo: required
+dist: trusty
+services:
+  - docker
+deploy:
+  provider: gcs
+  access_key_id: "GCS Interoperable Access Key ID"
+  secret_access_key: "GCS Interoperable Access Secret"
+  bucket: "GCS Bucket"
+  skip_cleanup: true
+  travis encrypt --add deploy.secret_access_key
+
+language: python
+python:
+  - "2.7"
+cache: pip
+install:
+  - pip install -r requirements.txt
+jdk:
+  - oraclejdk8
+script:
+  - travis/test.sh
+
+
+
+
+#notifications:
+#  slack:
+#    rooms:
+#      - secure: B5KYcnhk/ujAUWlHsjzP7ROLm6MtYhaGikdYf6JYINovhMbVKnZCTlZEy7rqT3L2T5uJ25iefD500VQGk1Gn7puQ1sNq50wqjzQaj20PWEiBwoWalcV/nKBcQx1TyFT13LJv8fbFnVPxFCkC3YXoHedx8qAhDs8GH/tT5J8XOC8=
+#    template:
+#      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}"
+#    on_success: change
+#    on_failure: change
+#    on_pull_requests: false
