@@ -7,10 +7,10 @@ jdk:
 - oraclejdk8
 deploy:
   provider: gae
-  keyfile: YOUR SERVICE ACCOUNT JSON FILE
+  keyfile: travis/resources/servicekey.json.enc
   project: broad-dsde-outreach
-script:
-- travis/test.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv
   -in travis/resources/servicekey.json.enc -out servicekey.json -d
+script:
+- travis/test.sh
