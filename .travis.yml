@@ -5,11 +5,12 @@ services:
 language: java
 jdk:
 - oraclejdk8
+deploy:
+  provider: gae
+  keyfile: YOUR SERVICE ACCOUNT JSON FILE
+  project: broad-dsde-outreach
 script:
 - travis/test.sh
-deploy:
-  provider: gcs
-  access_key_id: GOOGNHV5W4BBYT2JPF7AAH34
-  secret_access_key:
-    secure: o8LoyLpT3lgjpzyoCANEsw1gjnSp6T76WNskUxWq9ajGJiuoX5sKsLXejOdzYEZ6rVecNVLUbJFuCg4WMvSAXPzYG45lG2ENDgFFwUEAWBO+YaYg3hTFq7Ro/nTU2GUZ5zfeNMRfoLBOb19kf6OG/9Y10/vpA4WBjWLFPuqtdr0LkeZXCAaU2iD9wUkjKv9qsbKYvJl6JqFT+8xI8XnoR3m7OF4DnEf2ecJaDsOkiDCA+DOuDAgDoX3KV3BiB0hCgEXTYql9K1K5Ec5Prgp9/1DPaEbYSN42z6TzqrV9dXxBmfTsvhYre5RE5Kii2Q4kH97DyvIS3XWyi8nOGdt8YBSFHBzx5Tm8a8gC/WUvlDaF7eErfU16OaULCxmI8etDmho4IcJ5ytAKdgcjMxnGzRyWEFQa7JP1zEvPts8OZ1JEgy/ZogQ8jxYYGEdw0/urajS3qAG3u81bDBERc30mPO5VKWZps8anUDForP+Z8yvrIHWUdUOM0Yj0WcRn9fw7LourZjqyn34LHM8rQecaPn4dc4bj5wx0ozaBHVCPJxqUioFfV+4RB2Epngds6/MZlsIy0/gdhlLlj7xJ5+8voAj/DgttAn2hrUdrE9qBHIMyMANMwzEcSmptL0/YyuK2KUIXaoyOi3XVOxG74jXfffzTzwW61OCvpo74NLxLzN4=
-  bucket: gs://beri-test/gatk-workflows-travis-tests/
+before_install:
+- openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv
+  -in travis/resources/servicekey.json.enc -out servicekey.json -d
