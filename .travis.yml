@@ -5,12 +5,21 @@ services:
 language: java
 jdk:
 - oraclejdk8
+
+before_install:
+#- export BOTO_CONFIG=/dev/null;
+#- GCLOUD_HOME=$HOME/gcloud/google-cloud-sdk/bin;
+- openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv  -in travis/resources/servicekey.json.enc -out servicekey.json -d
+#- travis/resources/install_gcloud.sh;
+#- printf 'y\n' | $GCLOUD_HOME/gcloud components update;
+#- if [[ $TEST_TYPE == cloud ]]; then
+#    printf 'y\n' | $GCLOUD_HOME/gcloud components install beta;
+#  fi;
+#- $GCLOUD_HOME/gcloud config set project broad-dsde-outreach;
+#- $GCLOUD_HOME/gcloud auth activate-service-account --key-file servicekey.json;
 deploy:
   provider: gae
   keyfile: travis/resources/servicekey.json.enc
   project: broad-dsde-outreach
-before_install:
-- openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv
-  -in travis/resources/servicekey.json.enc -out servicekey.json -d
 script:
 - travis/test.sh
