@@ -10,7 +10,7 @@ jdk:
 
 before_install:
 - if [ $TRAVIS_SECURE_ENV_VARS == true ]; then
-    openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv -in travis/resources/servicekey.json.enc -out servicekey.json -d
+    openssl aes-256-cbc -K $encrypted_7e6e282fecc8_key -iv $encrypted_7e6e282fecc8_iv -in travis/resources/servicekey.json.enc -out servicekey.json -d;
   fi
 
 install: travis_wait 180 mvn install
