@@ -22,3 +22,10 @@ script:
 - if [ $test_complete == false ]; then
      sleep 45m
   fi
+- if [ $test_complete == false ]; then
+     sleep 45m
+  fi
+- if [ $test_complete == false ]; then
+     sleep 45m
+  fi
+#- cat cromwell-workflow-logs/workflow*
