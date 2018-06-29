@@ -4,11 +4,11 @@ cromwell_version="33"
 wdl="processing-for-variant-discovery-gatk4.wdl"
 json="processing-for-variant-discovery-gatk4.hg38.wgs.inputs.json"
 
-# Sleep one minute between printouts, but don't zombie for more than two hours
-for ((i=0; i < 180; i++)); do
-    sleep 60
-    printf "…"
-done &
+# Sleep one minute between printouts, but don't zombie for more than two hours. This prevents Travis from automatically exiting due to lack of output while workflow is running.
+#for ((i=0; i < 180; i++)); do
+#    sleep 60
+#    printf "…"${i}
+#done &
 #downloand cromwell
 wget http://github.com/broadinstitute/cromwell/releases/download/${cromwell_version}/cromwell-${cromwell_version}.jar
 #excute wdl script
