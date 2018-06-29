@@ -14,4 +14,4 @@ before_install:
   fi
 
 script:
-- travis_wait 180 travis/test.sh
+- travis/test.sh
