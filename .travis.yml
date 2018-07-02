@@ -17,15 +17,31 @@ script:
 - travis/test.sh
 #If travis/test.sh hasn't completed wait for 45min
 - if [ $test_complete == false ]; then
-     sleep 45m;
+     sleep 2700;
+     echo "slept for 45 min";
+     echo "test is complete?" $test_complete;
+     echo "tail output.txt";
+     tail -n 100 output.txt;
   fi
 - if [ $test_complete == false ]; then
-     sleep 45m;
+     sleep 2700;
+     echo "slept for 90 min";
+     echo "test is complete?" $test_complete;
+     echo "tail output.txt";
+     tail -n 100 output.txt;
   fi
 - if [ $test_complete == false ]; then
-     sleep 45m;
+     sleep 2700;
+     echo "slept for 135 min";
+     echo "test is complete?" $test_complete;
+     echo "tail output.txt";
+     tail -n 100 output.txt;
   fi
 - if [ $test_complete == false ]; then
-     sleep 45m;
+     sleep 2700;
+     echo "slept for 180 min";
+     echo "test is complete?" $test_complete;
+     echo "tail output.txt";
+     tail -n 100 output.txt;
   fi
 #- cat cromwell-workflow-logs/workflow*
