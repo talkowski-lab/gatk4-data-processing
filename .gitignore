@@ -1,5 +1,2 @@
 #Please don't commit me
 servicekey.json
-
-#May want to delete after build time increases
-travis/wait.sh
