@@ -15,7 +15,7 @@ before_install:
 
 script:
 - travis/test.sh
-#If travis/test.sh hasn't completed wait for 60min
+#If travis/test.sh hasn't completed wait for 45min
 - if [ $test_complete == false ]; then
      sleep 45m
   fi
