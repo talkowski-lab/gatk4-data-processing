@@ -15,9 +15,3 @@ before_install:
 
 script:
 - travis/test.sh
-#If travis/test.sh hasn't completed wait for 45min
-- travis/wait.sh
-- travis/wait.sh
-- travis/wait.sh
-- travis/wait.sh
-#- cat cromwell-workflow-logs/workflow*
