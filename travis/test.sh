@@ -20,8 +20,8 @@ wget http://github.com/broadinstitute/cromwell/releases/download/${cromwell_vers
 #whats in the workflow-log
 #tail -f cromwell-workflow-logs/workflow* &
 
-if java -Dconfig.file=travis/resources/google-sac.conf -Dbackend.providers.JES.config.project=broad-dsde-outreach -Dbackend.providers.JES.config.root=gs://beri-test/gatk-workflows-travis-tests/ -jar cromwell-${cromwell_version}.jar run ${wdl} -i ${json} > outpute.txt 2>&1 ; then
-    touch succes;
+if java -Dconfig.file=travis/resources/google-sac.conf -Dbackend.providers.JES.config.project=broad-dsde-outreach -Dbackend.providers.JES.config.root=gs://beri-test/gatk-workflows-travis-tests/ -jar cromwell-${cromwell_version}.jar run ${wdl} -i ${json} > output.txt 2>&1 ; then
+    touch succes.txt;
 else
-    touch failed;
+    touch failed.txt;
 fi &

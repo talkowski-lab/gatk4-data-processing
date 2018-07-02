@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -f done.txt ]; then
+if [ ! -f succes.txt ]; then
   for ((i=0; i < 45; i++)); do
     sleep 60
     printf "…"${i}
